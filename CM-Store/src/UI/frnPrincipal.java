@@ -73,6 +73,7 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -232,6 +233,12 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenu4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/001-open-box.png"))); // NOI18N
+        jMenuItem6.setText("Gerenciador");
+        jMenu4.add(jMenuItem6);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Financeiro_1.png"))); // NOI18N
@@ -389,6 +396,7 @@ public class frnPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

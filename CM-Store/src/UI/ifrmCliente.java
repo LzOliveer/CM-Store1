@@ -83,6 +83,20 @@ public class ifrmCliente extends javax.swing.JInternalFrame {
         }
     }
 
+    public void nm_emp() {
+        String sql = "Select codigo,nome from loja where codigo like ?";
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            ps = Conexao.getConexao().prepareStatement(sql);
+            ps.setString(1, cod_emp.getText() + "%");
+            rs = ps.executeQuery();
+            tab_emp.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (ClassNotFoundException | SQLException error) {
+            JOptionPane.showMessageDialog(null, error, "CM - Store 1.0 | Erro - Gerenciador de Clientes", JOptionPane.ERROR_MESSAGE, erro);
+        }
+    }
+
     public void psq_empresa() {
         String sql = "Select codigo,nome from loja where nome like ?";
         PreparedStatement ps;
@@ -109,6 +123,8 @@ public class ifrmCliente extends javax.swing.JInternalFrame {
         email.setText(tab_cli.getModel().getValueAt(seleciona, 9).toString());
         cod_emp.setText(tab_cli.getModel().getValueAt(seleciona, 8).toString());
         cel.setText(tab_cli.getModel().getValueAt(seleciona, 4).toString());
+        psq_emp.setText("");
+        nm_emp();
     }
 
     public void comp_ifrm2() {

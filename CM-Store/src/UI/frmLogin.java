@@ -40,7 +40,7 @@ public class frmLogin extends javax.swing.JFrame {
     }
 
     private void Logar() throws SQLException, ClassNotFoundException {
-        String sql = "select nome from funcionario where codigo = ? and senha = ?";
+        String sql = "select nome, categoria from funcionario where codigo = ? and senha = ?";
         PreparedStatement ps;
         ResultSet rs;
         c = (Integer.parseInt(cod.getText()));
@@ -51,6 +51,7 @@ public class frmLogin extends javax.swing.JFrame {
             rs = ps.executeQuery();
             if (rs.next()) {
                 String nome = (rs.getString("nome"));
+                int cat = (rs.getInt("categoria"));
                 frnPrincipal fp = new frnPrincipal();
                 fp.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Seja Bem-Vindo " + nome, "Login | CM - Store 1.0", JOptionPane.INFORMATION_MESSAGE, ok);

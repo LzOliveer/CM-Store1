@@ -5,17 +5,64 @@
  */
 package UI;
 
+import DAO.Conexao;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author luizo
  */
 public class ifrmProduto extends javax.swing.JInternalFrame {
 
+    Icon aviso = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/Alerta.png"))));
+    Icon erro = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/Erro.png"))));
+
     /**
      * Creates new form ifrmProduto
      */
     public ifrmProduto() {
         initComponents();
+        list_prod();
+    }
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
+
+    public void list_prod() {
+        String sql = "Select * from produto";
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            ps = Conexao.getConexao().prepareStatement(sql);
+            rs = ps.executeQuery();
+            tab_prod.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (ClassNotFoundException | SQLException error) {
+            JOptionPane.showMessageDialog(null, error, "CM - Store 1.0 | Erro - Gerenciador de Fabricantes", JOptionPane.ERROR_MESSAGE, erro);
+        }
+    }
+
+    public void psq_produto() {
+        String sql = "Select * from produto where codigo like ? or nome like ?";
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            ps = Conexao.getConexao().prepareStatement(sql);
+            ps.setString(1, psq_prod.getText() + "%");
+            ps.setString(2, psq_prod.getText() + "%");
+            rs = ps.executeQuery();
+            tab_prod.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (ClassNotFoundException | SQLException error) {
+            JOptionPane.showMessageDialog(null, error, "CM - Store 1.0 | Erro - Gerenciador de Produtos", JOptionPane.ERROR_MESSAGE, erro);
+        }
     }
 
     /**
@@ -27,21 +74,93 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        psq_prod = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tab_prod = new javax.swing.JTable();
+
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Gerenciador de Produtos | CM - Store 1.0");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/001-open-box.png"))); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/007-delivery.png"))); // NOI18N
+        jLabel1.setText("Nome ou Código");
+
+        psq_prod.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        psq_prod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                psq_prodKeyReleased(evt);
+            }
+        });
+
+        tab_prod.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tab_prod);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(psq_prod)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(psq_prod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void psq_prodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psq_prodKeyReleased
+        psq_produto();
+    }//GEN-LAST:event_psq_prodKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField psq_prod;
+    private javax.swing.JTable tab_prod;
     // End of variables declaration//GEN-END:variables
 }

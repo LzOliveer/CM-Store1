@@ -73,7 +73,10 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -162,7 +165,7 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenu1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jMenu1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/shop32.png"))); // NOI18N
         jMenuItem2.setText("Empresa");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -234,10 +237,31 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/factory.png"))); // NOI18N
+        jMenuItem7.setText("Fabricante");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem7);
+        jMenu4.add(jSeparator3);
+
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/001-open-box.png"))); // NOI18N
-        jMenuItem6.setText("Gerenciador");
+        jMenuItem6.setText("Produtos");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem6);
+
+        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/035-shopping-cart.png"))); // NOI18N
+        jMenuItem8.setText("Estoque");
+        jMenu4.add(jMenuItem8);
 
         jMenuBar1.add(jMenu4);
 
@@ -348,6 +372,20 @@ public class frnPrincipal extends javax.swing.JFrame {
         ifs.setPosicao();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        ifrmFabricante iffab = new ifrmFabricante();
+        iffab.setVisible(true);
+        desktop.add(iffab);
+        iffab.setPosicao();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        ifrmProduto ifp = new ifrmProduto();
+        ifp.setVisible(true);
+        desktop.add(ifp);
+        ifp.setPosicao();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -397,9 +435,12 @@ public class frnPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     // End of variables declaration//GEN-END:variables
 
     class hora implements ActionListener {

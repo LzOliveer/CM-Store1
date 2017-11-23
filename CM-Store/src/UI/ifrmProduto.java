@@ -5,10 +5,10 @@
  */
 package UI;
 
-import DAO.ClienteController;
 import DAO.Conexao;
 import DAO.ProdController;
 import DTO.Produto;
+import Util.Convrt;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.PreparedStatement;
@@ -29,7 +29,10 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
 
     Icon aviso = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/Alerta.png"))));
     Icon erro = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/Erro.png"))));
-
+    
+    String pmc;
+    double pfab, lucr, pfi;
+       
     /**
      * Creates new form ifrmProduto
      */
@@ -107,7 +110,7 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
         try {
             ps = Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, psq_fab.getText() + "%");
-            ps.setString(1, psq_fab.getText() + "%");
+            ps.setString(2, psq_fab.getText() + "%");
             rs = ps.executeQuery();
             tab_fab.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (ClassNotFoundException | SQLException error) {
@@ -136,11 +139,16 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
     }
 
     public void comp_pv() {
-        double pfab = Double.parseDouble(pf.getText());
-        double lcr = Double.parseDouble(lucro.getText());
+        double pfab = Convrt.vtop(pf.getText());
+        System.out.println(pfab);
+        double lcr = Convrt.vtop(lucro.getText());
+        System.out.println(lcr);
         double pfi = pfab + ((pfab * lcr) / 100);
-        String prc = (String.valueOf(String.format("%.2f", pfi)));
-        pv.setText(prc);
+    }
+    
+    public void compPV(){
+        String pmc = Convrt.ptov(pfi);
+        pv.setText(pmc);
     }
 
     /**
@@ -290,6 +298,11 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
         lucro.setK_bord_focus_gained(new java.awt.Color(249, 182, 81));
         lucro.setK_placeholder_text("Ex: 50.00%");
         lucro.setPreferredSize(new java.awt.Dimension(100, 28));
+        lucro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lucroFocusLost(evt);
+            }
+        });
         lucro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 lucroKeyReleased(evt);
@@ -637,8 +650,8 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
     private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
         Produto prod = new Produto();
         prod.setNome(nome.getText());
-        prod.setCod_fab(Integer.parseInt(cod_fab.getText()));
-        prod.setCod(Integer.parseInt(cod.getText()));
+        prod.setCod_fab(cod_fab.getText());
+        prod.setCod(cod.getText());
 
         if ((cod.getText().isEmpty()) || (nome.getText().isEmpty()) || (cod_fab.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Favor selecione um cadastro existente, só após exclua o mesmo", "CM - Store 1.0 | Aviso - Gerencidor de Produtos", JOptionPane.INFORMATION_MESSAGE, aviso);
@@ -666,15 +679,15 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
 
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
         Produto prod = new Produto();
-        prod.setCod_bar(Integer.parseInt(cod_bar.getText()));
+        prod.setCod_bar(cod_bar.getText());
         prod.setNome(nome.getText());
         prod.setApr(apr.getText());
-        prod.setCod_fab(Integer.parseInt(cod_fab.getText()));
-        prod.setEst(Integer.parseInt(est.getText()));
-        prod.setLucro(Float.parseFloat(lucro.getText()));
-        prod.setPf(Float.parseFloat(pf.getText()));
-        prod.setPv(Float.parseFloat(pv.getText()));
-        prod.setCod(Integer.parseInt(cod.getText()));
+        prod.setCod_fab(cod_fab.getText());
+        prod.setEst(est.getText());
+        prod.setLucro(lucro.getText());
+        prod.setPf(pf.getText());
+        prod.setPv(pv.getText());
+        prod.setCod(cod.getText());
 
         if ((cod.getText().isEmpty()) || (cod_bar.getText().isEmpty()) || (est.getText().isEmpty()) || (pf.getText().isEmpty()) || (nome.getText().isEmpty()) || (pv.getText().isEmpty()) || (lucro.getText().isEmpty()) || (cod_fab.getText().isEmpty()) || (apr.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Favor selecione um cadastro existente, só após edite os dados do mesmo", "CM - Store 1.0 | Aviso - Gerencidor de Produtos", JOptionPane.INFORMATION_MESSAGE, aviso);
@@ -702,14 +715,14 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         Produto prod = new Produto();
-        prod.setCod_bar(Integer.parseInt(cod_bar.getText()));
+        prod.setCod_bar(cod_bar.getText());
         prod.setNome(nome.getText());
         prod.setApr(apr.getText());
-        prod.setCod_fab(Integer.parseInt(cod_fab.getText()));
-        prod.setEst(Integer.parseInt(est.getText()));
-        prod.setLucro(Float.parseFloat(lucro.getText()));
-        prod.setPf(Float.parseFloat(pf.getText()));
-        prod.setPv(Float.parseFloat(pv.getText()));
+        prod.setCod_fab(cod_fab.getText());
+        prod.setEst(est.getText());
+        prod.setLucro(lucro.getText());
+        prod.setPf(pf.getText());
+        prod.setPv(pv.getText());
 
         if ((cod_bar.getText().isEmpty()) || (est.getText().isEmpty()) || (pf.getText().isEmpty()) || (nome.getText().isEmpty()) || (pv.getText().isEmpty()) || (lucro.getText().isEmpty()) || (cod_fab.getText().isEmpty()) || (apr.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Os campos não podem estar incompletos. Favor preencher todos os campos", "CM - Store 1.0 | Aviso - Gerencidor de Produtos", JOptionPane.INFORMATION_MESSAGE, aviso);
@@ -742,6 +755,10 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
     private void lucroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lucroKeyReleased
         comp_pv();
     }//GEN-LAST:event_lucroKeyReleased
+
+    private void lucroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lucroFocusLost
+        compPV();
+    }//GEN-LAST:event_lucroFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

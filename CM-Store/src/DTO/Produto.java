@@ -10,111 +10,111 @@ package DTO;
  * @author luizo
  */
 public class Produto {
-    private int cod;
-    private int cod_fab;
-    private int est;
-    private long cod_bar;
-    private float lucro;
-    private float pf;
-    private float pv;
+    private String cod;
+    private String cod_fab;
+    private String est;
+    private String cod_bar;
+    private String lucro;
+    private String pf;
+    private String pv;
     private String nome;
     private String apr;
 
     /**
      * @return the cod
      */
-    public int getCod() {
+    public String getCod() {
         return cod;
     }
 
     /**
      * @param cod the cod to set
      */
-    public void setCod(int cod) {
+    public void setCod(String cod) {
         this.cod = cod;
     }
 
     /**
      * @return the cod_fab
      */
-    public int getCod_fab() {
+    public String getCod_fab() {
         return cod_fab;
     }
 
     /**
      * @param cod_fab the cod_fab to set
      */
-    public void setCod_fab(int cod_fab) {
+    public void setCod_fab(String cod_fab) {
         this.cod_fab = cod_fab;
     }
 
     /**
      * @return the est
      */
-    public int getEst() {
+    public String getEst() {
         return est;
     }
 
     /**
      * @param est the est to set
      */
-    public void setEst(int est) {
+    public void setEst(String est) {
         this.est = est;
     }
 
     /**
      * @return the cod_bar
      */
-    public long getCod_bar() {
+    public String getCod_bar() {
         return cod_bar;
     }
 
     /**
      * @param cod_bar the cod_bar to set
      */
-    public void setCod_bar(long cod_bar) {
+    public void setCod_bar(String cod_bar) {
         this.cod_bar = cod_bar;
     }
 
     /**
      * @return the lucro
      */
-    public float getLucro() {
+    public String getLucro() {
         return lucro;
     }
 
     /**
      * @param lucro the lucro to set
      */
-    public void setLucro(float lucro) {
+    public void setLucro(String lucro) {
         this.lucro = lucro;
     }
 
     /**
      * @return the pf
      */
-    public float getPf() {
+    public String getPf() {
         return pf;
     }
 
     /**
      * @param pf the pf to set
      */
-    public void setPf(float pf) {
+    public void setPf(String pf) {
         this.pf = pf;
     }
 
     /**
      * @return the pv
      */
-    public float getPv() {
+    public String getPv() {
         return pv;
     }
 
     /**
      * @param pv the pv to set
      */
-    public void setPv(float pv) {
+    public void setPv(String pv) {
         this.pv = pv;
     }
 
@@ -145,4 +145,5 @@ public class Produto {
     public void setApr(String apr) {
         this.apr = apr;
     }
+
 }

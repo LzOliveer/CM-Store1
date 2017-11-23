@@ -129,10 +129,11 @@ public class frmSS extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(43, 173, 255));
 
         status.setBackground(new java.awt.Color(73, 173, 255));
-        status.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        status.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         status.setForeground(new java.awt.Color(255, 255, 255));
         status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         status.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        status.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         BarraProgresso.setBackground(new java.awt.Color(255, 255, 255));
         BarraProgresso.setForeground(new java.awt.Color(255, 0, 0));
@@ -148,8 +149,8 @@ public class frmSS extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BarraProgresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(BarraProgresso, javax.swing.GroupLayout.PREFERRED_SIZE, 10, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

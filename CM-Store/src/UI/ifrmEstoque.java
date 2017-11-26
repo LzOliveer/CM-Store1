@@ -43,7 +43,7 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
     }
 
     public void list_prod() {
-        String sql = "Select * from produto";
+        String sql = "Select codigo, codbarras, nome, estoque from produto where codigo like ? or codbarras like ?or nome like ?";
         PreparedStatement ps;
         ResultSet rs;
         try {
@@ -51,7 +51,7 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
             rs = ps.executeQuery();
             tab_prod.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (ClassNotFoundException | SQLException error) {
-            JOptionPane.showMessageDialog(null, error, "CM - Store 1.0 | Erro - Gerenciador de Produtos", JOptionPane.ERROR_MESSAGE, erro);
+            JOptionPane.showMessageDialog(null, error, "CM - Store 1.0 | Erro - Gerenciador de Estoque", JOptionPane.ERROR_MESSAGE, erro);
         }
     }
 

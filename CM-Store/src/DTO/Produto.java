@@ -10,55 +10,55 @@ package DTO;
  * @author luizo
  */
 public class Produto {
-    private String cod;
-    private String cod_fab;
-    private String est;
+    private int cod;
+    private int cod_fab;
+    private int est;
     private String cod_bar;
-    private String lucro;
-    private String pf;
-    private String pv;
+    private double lucro;
+    private double pf;
+    private double pv;
     private String nome;
     private String apr;
 
     /**
      * @return the cod
      */
-    public String getCod() {
+    public int getCod() {
         return cod;
     }
 
     /**
      * @param cod the cod to set
      */
-    public void setCod(String cod) {
+    public void setCod(int cod) {
         this.cod = cod;
     }
 
     /**
      * @return the cod_fab
      */
-    public String getCod_fab() {
+    public int getCod_fab() {
         return cod_fab;
     }
 
     /**
      * @param cod_fab the cod_fab to set
      */
-    public void setCod_fab(String cod_fab) {
+    public void setCod_fab(int cod_fab) {
         this.cod_fab = cod_fab;
     }
 
     /**
      * @return the est
      */
-    public String getEst() {
+    public int getEst() {
         return est;
     }
 
     /**
      * @param est the est to set
      */
-    public void setEst(String est) {
+    public void setEst(int est) {
         this.est = est;
     }
 
@@ -79,42 +79,42 @@ public class Produto {
     /**
      * @return the lucro
      */
-    public String getLucro() {
+    public double getLucro() {
         return lucro;
     }
 
     /**
      * @param lucro the lucro to set
      */
-    public void setLucro(String lucro) {
+    public void setLucro(double lucro) {
         this.lucro = lucro;
     }
 
     /**
      * @return the pf
      */
-    public String getPf() {
+    public double getPf() {
         return pf;
     }
 
     /**
      * @param pf the pf to set
      */
-    public void setPf(String pf) {
+    public void setPf(double pf) {
         this.pf = pf;
     }
 
     /**
      * @return the pv
      */
-    public String getPv() {
+    public double getPv() {
         return pv;
     }
 
     /**
      * @param pv the pv to set
      */
-    public void setPv(String pv) {
+    public void setPv(double pv) {
         this.pv = pv;
     }
 
@@ -146,4 +146,5 @@ public class Produto {
         this.apr = apr;
     }
 
+    
 }

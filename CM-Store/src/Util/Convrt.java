@@ -25,7 +25,6 @@ public class Convrt {
     public static Double vtop(String valor) {
         NumberFormat instance = DecimalFormat.getInstance(new Locale("pt", "BR"));
         instance.setMaximumFractionDigits(2);
-        Double dValue;
         try {
             return (Double) instance.parse(valor);
         } catch (ParseException e) {
@@ -49,7 +48,7 @@ public class Convrt {
     public static void main(String[] args) {
         
         System.out.println("" + Convrt.vtop("1545,52"));
-        System.out.println("" + Convrt.ptov(1211211.115));
+        System.out.println("" + Convrt.ptov(1211211.119));
     }
 
 }

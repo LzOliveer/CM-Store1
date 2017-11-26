@@ -5,7 +5,7 @@
  */
 package UI;
 
-import DAO.Conexao;
+import persistencia.Conexao;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.sql.PreparedStatement;

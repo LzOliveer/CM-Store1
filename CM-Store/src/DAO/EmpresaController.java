@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import persistencia.Conexao;
 import java.awt.Toolkit;
 import DTO.Empresa;
 import java.sql.PreparedStatement;

@@ -5,7 +5,9 @@
  */
 package DAO;
 
+import persistencia.Conexao;
 import DTO.Produto;
+import Util.Convrt;
 import java.awt.Toolkit;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -31,13 +33,13 @@ public class ProdController {
             ps.setLong(1, Long.parseLong(prod.getCod_bar()));
             ps.setString(2, prod.getNome());
             ps.setString(3, prod.getApr());
-            ps.setFloat(4, Float.parseFloat(prod.getPf()));
-            ps.setFloat(5, Float.parseFloat(prod.getLucro()));
-            ps.setFloat(6, Float.parseFloat(prod.getPv()));
-            ps.setInt(7, Integer.parseInt(prod.getEst()));
-            ps.setInt(8, Integer.parseInt(prod.getCod_fab()));
+            ps.setDouble(4, prod.getPf());
+            ps.setDouble(5, prod.getLucro());
+            ps.setDouble(6, prod.getPv());
+            ps.setInt(7, prod.getEst());
+            ps.setInt(8, prod.getCod_fab());
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Produto '" + prod.getNome() + "' cadastrado com sucesso!", "CM - Store 1.0 | Aviso - Gerencidor de Produtos", JOptionPane.INFORMATION_MESSAGE, ok);
+            JOptionPane.showMessageDialog(null, "Produto  " + prod.getNome() + "  cadastrado com sucesso!", "CM - Store 1.0 | Aviso - Gerencidor de Produtos", JOptionPane.INFORMATION_MESSAGE, ok);
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);

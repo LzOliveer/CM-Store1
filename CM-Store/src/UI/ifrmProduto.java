@@ -5,7 +5,7 @@
  */
 package UI;
 
-import DAO.Conexao;
+import persistencia.Conexao;
 import DAO.ProdController;
 import DTO.Produto;
 import Util.Convrt;
@@ -29,10 +29,10 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
 
     Icon aviso = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/Alerta.png"))));
     Icon erro = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/Erro.png"))));
-    
+
     String pmc;
     double pfab, lucr, pfi;
-       
+
     /**
      * Creates new form ifrmProduto
      */
@@ -140,13 +140,8 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
 
     public void comp_pv() {
         double pfab = Convrt.vtop(pf.getText());
-        System.out.println(pfab);
         double lcr = Convrt.vtop(lucro.getText());
-        System.out.println(lcr);
         double pfi = pfab + ((pfab * lcr) / 100);
-    }
-    
-    public void compPV(){
         String pmc = Convrt.ptov(pfi);
         pv.setText(pmc);
     }
@@ -718,11 +713,11 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
         prod.setCod_bar(cod_bar.getText());
         prod.setNome(nome.getText());
         prod.setApr(apr.getText());
-        prod.setCod_fab(cod_fab.getText());
-        prod.setEst(est.getText());
-        prod.setLucro(lucro.getText());
-        prod.setPf(pf.getText());
-        prod.setPv(pv.getText());
+        prod.setCod_fab(Integer.parseInt(cod_fab.getText()));
+        prod.setEst(Integer.parseInt(est.getText()));
+        prod.setLucro(Convrt.vtop(lucro.getText()));
+        prod.setPf(Convrt.vtop(pf.getText()));
+        prod.setPv(Convrt.vtop(pv.getText()));
 
         if ((cod_bar.getText().isEmpty()) || (est.getText().isEmpty()) || (pf.getText().isEmpty()) || (nome.getText().isEmpty()) || (pv.getText().isEmpty()) || (lucro.getText().isEmpty()) || (cod_fab.getText().isEmpty()) || (apr.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Os campos não podem estar incompletos. Favor preencher todos os campos", "CM - Store 1.0 | Aviso - Gerencidor de Produtos", JOptionPane.INFORMATION_MESSAGE, aviso);
@@ -750,14 +745,16 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
 
     private void pfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfKeyReleased
         comp_pv();
+
     }//GEN-LAST:event_pfKeyReleased
 
     private void lucroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lucroKeyReleased
         comp_pv();
+
     }//GEN-LAST:event_lucroKeyReleased
 
     private void lucroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lucroFocusLost
-        compPV();
+
     }//GEN-LAST:event_lucroFocusLost
 
 

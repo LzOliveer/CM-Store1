@@ -5,7 +5,7 @@
  */
 package UI;
 
-import DAO.Conexao;
+import persistencia.Conexao;
 import DAO.LeParametros;
 import DAO.SalvaParametros;
 import java.awt.Toolkit;

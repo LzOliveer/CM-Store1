@@ -5,7 +5,7 @@
  */
 package UI;
 
-import DAO.Conexao;
+import persistencia.Conexao;
 import DAO.LeParametros;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -261,6 +261,11 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/035-shopping-cart.png"))); // NOI18N
         jMenuItem8.setText("Estoque");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem8);
 
         jMenuBar1.add(jMenu4);
@@ -385,6 +390,13 @@ public class frnPrincipal extends javax.swing.JFrame {
         desktop.add(ifp);
         ifp.setPosicao();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        ifrmEstoque ife = new ifrmEstoque();
+        ife.setVisible(true);
+        desktop.add(ife);
+        ife.setPosicao();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments

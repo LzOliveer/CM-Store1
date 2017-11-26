@@ -5,7 +5,7 @@
  */
 package UI;
 
-import DAO.Conexao;
+import persistencia.Conexao;
 import DAO.SalarioController;
 import DTO.Salario;
 import java.awt.Dimension;

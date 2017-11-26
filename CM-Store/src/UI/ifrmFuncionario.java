@@ -5,7 +5,7 @@
  */
 package UI;
 
-import DAO.Conexao;
+import persistencia.Conexao;
 import DAO.FuncionarioController;
 import DTO.Funcionario;
 import java.awt.Dimension;

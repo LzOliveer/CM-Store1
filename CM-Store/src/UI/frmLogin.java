@@ -5,7 +5,7 @@
  */
 package UI;
 
-import DAO.Conexao;
+import persistencia.Conexao;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;

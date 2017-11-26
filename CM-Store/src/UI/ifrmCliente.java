@@ -6,7 +6,7 @@
 package UI;
 
 import DAO.ClienteController;
-import DAO.Conexao;
+import persistencia.Conexao;
 import DTO.Cliente;
 import java.awt.Dimension;
 import java.awt.Toolkit;

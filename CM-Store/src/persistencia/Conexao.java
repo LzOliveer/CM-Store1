@@ -1,4 +1,4 @@
-package DAO;
+package persistencia;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,6 +6,7 @@ package DAO;
  * and open the template in the editor.
  */
 
+import DAO.LeParametros;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;

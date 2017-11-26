@@ -121,7 +121,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton3.setBackground(new java.awt.Color(14, 147, 255));
+        jButton3.setBackground(new java.awt.Color(140, 140, 140));
         jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/003-login.png"))); // NOI18N
@@ -137,7 +137,7 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(14, 147, 255));
+        jButton4.setBackground(new java.awt.Color(140, 140, 140));
         jButton4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/021-exit.png"))); // NOI18N

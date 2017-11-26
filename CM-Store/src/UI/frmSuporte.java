@@ -66,7 +66,7 @@ public class frmSuporte extends javax.swing.JFrame {
         senha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         senha.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        jButton1.setBackground(new java.awt.Color(73, 173, 255));
+        jButton1.setBackground(new java.awt.Color(140, 140, 140));
         jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/003-login.png"))); // NOI18N
         jButton1.setText("Entrar");
@@ -77,7 +77,7 @@ public class frmSuporte extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(73, 173, 255));
+        jButton2.setBackground(new java.awt.Color(140, 140, 140));
         jButton2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/021-exit.png"))); // NOI18N
         jButton2.setText("Sair");

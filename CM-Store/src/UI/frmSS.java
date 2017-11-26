@@ -126,9 +126,9 @@ public class frmSS extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(43, 173, 255));
+        jPanel2.setBackground(new java.awt.Color(140, 140, 140));
 
-        status.setBackground(new java.awt.Color(73, 173, 255));
+        status.setBackground(new java.awt.Color(140, 140, 140));
         status.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         status.setForeground(new java.awt.Color(255, 255, 255));
         status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

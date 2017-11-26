@@ -56,7 +56,7 @@ public class frnPrincipal extends javax.swing.JFrame {
         ConnDB = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Icones/background2.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Icones/background3.png"));
         Image im = icon.getImage();
         desktop = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
@@ -91,19 +91,19 @@ public class frnPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(73, 173, 255));
+        jPanel4.setBackground(new java.awt.Color(140, 140, 140));
 
-        Hora.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Hora.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         Hora.setForeground(new java.awt.Color(255, 255, 255));
         Hora.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Hora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/013-circular-clock.png"))); // NOI18N
+        Hora.setToolTipText("");
 
-        Data.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Data.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         Data.setForeground(new java.awt.Color(255, 255, 255));
         Data.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Data.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/015-calendar.png"))); // NOI18N
+        Data.setToolTipText("");
 
-        ConnDB.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ConnDB.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         ConnDB.setForeground(new java.awt.Color(255, 255, 255));
         ConnDB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ConnDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/059-database-5.png"))); // NOI18N
@@ -121,23 +121,26 @@ public class frnPrincipal extends javax.swing.JFrame {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(ConnDB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 350, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 488, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 547, Short.MAX_VALUE)
                 .add(jLabel2)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jSeparator2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jSeparator2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(Data, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 123, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(Hora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 103, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(Data, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 96, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(Hora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(Data, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, Hora, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(ConnDB, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-            .add(jSeparator2)
-            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(0, 0, 0)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jSeparator2)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, Hora, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(ConnDB, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, Data, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         org.jdesktop.layout.GroupLayout desktopLayout = new org.jdesktop.layout.GroupLayout(desktop);
@@ -148,7 +151,7 @@ public class frnPrincipal extends javax.swing.JFrame {
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 654, Short.MAX_VALUE)
+            .add(0, 697, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));

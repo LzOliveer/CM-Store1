@@ -43,7 +43,7 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
     }
 
     public void list_prod() {
-        String sql = "Select codigo, codbarras, nome, estoque from produto where codigo like ? or codbarras like ?or nome like ?";
+        String sql = "Select codigo, codbarras, nome, estoque from produto";
         PreparedStatement ps;
         ResultSet rs;
         try {
@@ -56,7 +56,7 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
     }
 
     public void psq_produto() {
-        String sql = "Select codigo, codbarras, nome, estoque from produto where codigo like ? or codbarras like ?or nome like ?";
+        String sql = "Select codigo, codbarras, nome, estoque from produto where codigo like ? or codbarras like ? or nome like ?";
         PreparedStatement ps;
         ResultSet rs;
         try {
@@ -94,19 +94,19 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tab_prod = new br.com.cyber.componente.Ktable();
         jLabel2 = new javax.swing.JLabel();
-        cod = new br.com.cyber.componente.KTextField();
         jLabel3 = new javax.swing.JLabel();
-        cod_bar = new br.com.cyber.componente.KTextField();
         jLabel4 = new javax.swing.JLabel();
-        nome = new br.com.cyber.componente.KTextField();
         jLabel9 = new javax.swing.JLabel();
-        est_at = new br.com.cyber.componente.KTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        est_nv = new br.com.cyber.componente.KTextField();
         kButton1 = new br.com.cyber.componente.KButton();
         kButton2 = new br.com.cyber.componente.KButton();
         kButton3 = new br.com.cyber.componente.KButton();
+        cod = new javax.swing.JTextField();
+        cod_bar = new javax.swing.JTextField();
+        nome = new javax.swing.JTextField();
+        est_at = new javax.swing.JTextField();
+        est_nv = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -143,7 +143,7 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
             }
         ));
         tab_prod.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tab_prod.setHeadercolor(new java.awt.Color(47, 147, 255));
+        tab_prod.setHeadercolor(new java.awt.Color(140, 140, 140));
         tab_prod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tab_prodMouseClicked(evt);
@@ -154,70 +154,19 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Código");
 
-        cod.setEditable(false);
-        cod.setForeground(new java.awt.Color(255, 255, 255));
-        cod.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        cod.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        cod.setK_back_color(new java.awt.Color(204, 204, 204));
-        cod.setK_back_focus_gained(new java.awt.Color(204, 204, 204));
-        cod.setK_back_focus_lost(new java.awt.Color(204, 204, 204));
-        cod.setK_bord_color(new java.awt.Color(204, 204, 204));
-        cod.setK_bord_color_change_text(new java.awt.Color(204, 204, 204));
-        cod.setK_bord_focus_gained(new java.awt.Color(204, 204, 204));
-        cod.setK_bord_focus_lost(new java.awt.Color(204, 204, 204));
-        cod.setPreferredSize(new java.awt.Dimension(100, 28));
-
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Cód de Barras");
 
-        cod_bar.setEditable(false);
-        cod_bar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        cod_bar.setK_alert_color_change_text(new java.awt.Color(204, 204, 204));
-        cod_bar.setK_back_color(new java.awt.Color(204, 204, 204));
-        cod_bar.setK_back_focus_gained(new java.awt.Color(204, 204, 204));
-        cod_bar.setK_back_focus_lost(new java.awt.Color(204, 204, 204));
-        cod_bar.setK_bord_color(new java.awt.Color(204, 204, 204));
-        cod_bar.setK_bord_focus_gained(new java.awt.Color(204, 204, 204));
-        cod_bar.setK_bord_focus_lost(new java.awt.Color(204, 204, 204));
-        cod_bar.setPreferredSize(new java.awt.Dimension(100, 28));
-
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Nome");
-
-        nome.setEditable(false);
-        nome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        nome.setK_alert_color_change_text(new java.awt.Color(204, 204, 204));
-        nome.setK_back_color(new java.awt.Color(204, 204, 204));
-        nome.setK_back_focus_gained(new java.awt.Color(204, 204, 204));
-        nome.setK_back_focus_lost(new java.awt.Color(204, 204, 204));
-        nome.setK_bord_color(new java.awt.Color(204, 204, 204));
-        nome.setK_bord_focus_gained(new java.awt.Color(204, 204, 204));
-        nome.setK_bord_focus_lost(new java.awt.Color(204, 204, 204));
-        nome.setPreferredSize(new java.awt.Dimension(100, 28));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Estoque atual");
         jLabel9.setToolTipText("");
 
-        est_at.setEditable(false);
-        est_at.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        est_at.setK_alert_color_change_text(new java.awt.Color(204, 204, 204));
-        est_at.setK_back_color(new java.awt.Color(204, 204, 204));
-        est_at.setK_back_focus_gained(new java.awt.Color(204, 204, 204));
-        est_at.setK_back_focus_lost(new java.awt.Color(204, 204, 204));
-        est_at.setK_bord_color(new java.awt.Color(204, 204, 204));
-        est_at.setK_bord_focus_gained(new java.awt.Color(204, 204, 204));
-        est_at.setK_bord_focus_lost(new java.awt.Color(204, 204, 204));
-        est_at.setPreferredSize(new java.awt.Dimension(100, 28));
-
         jLabel5.setText("Novo estoque");
 
-        est_nv.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        est_nv.setK_back_focus_gained(new java.awt.Color(254, 246, 189));
-        est_nv.setK_bord_focus_gained(new java.awt.Color(249, 182, 81));
-        est_nv.setPreferredSize(new java.awt.Dimension(100, 28));
-
-        kButton1.setBackground(new java.awt.Color(47, 147, 255));
+        kButton1.setBackground(new java.awt.Color(140, 140, 140));
         kButton1.setForeground(new java.awt.Color(255, 255, 255));
         kButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/002-delivery-2.png"))); // NOI18N
         kButton1.setText("Ajustar");
@@ -229,7 +178,7 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
             }
         });
 
-        kButton2.setBackground(new java.awt.Color(47, 147, 255));
+        kButton2.setBackground(new java.awt.Color(140, 140, 140));
         kButton2.setForeground(new java.awt.Color(255, 255, 255));
         kButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/exit.png"))); // NOI18N
         kButton2.setText("Sair");
@@ -241,7 +190,7 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
             }
         });
 
-        kButton3.setBackground(new java.awt.Color(47, 147, 255));
+        kButton3.setBackground(new java.awt.Color(140, 140, 140));
         kButton3.setForeground(new java.awt.Color(255, 255, 255));
         kButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Limpar.png"))); // NOI18N
         kButton3.setText("Limpar");
@@ -253,6 +202,28 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
             }
         });
 
+        cod.setEditable(false);
+        cod.setBackground(new java.awt.Color(140, 140, 140));
+        cod.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cod.setForeground(new java.awt.Color(255, 255, 255));
+
+        cod_bar.setEditable(false);
+        cod_bar.setBackground(new java.awt.Color(140, 140, 140));
+        cod_bar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cod_bar.setForeground(new java.awt.Color(255, 255, 255));
+
+        nome.setEditable(false);
+        nome.setBackground(new java.awt.Color(140, 140, 140));
+        nome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        nome.setForeground(new java.awt.Color(255, 255, 255));
+
+        est_at.setEditable(false);
+        est_at.setBackground(new java.awt.Color(140, 140, 140));
+        est_at.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        est_at.setForeground(new java.awt.Color(255, 255, 255));
+
+        est_nv.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -261,44 +232,46 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(psq_prod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cod_bar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(66, 66, 66)
-                                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(est_at, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(est_nv, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cod_bar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nome)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(psq_prod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(est_at, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel5))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 59, Short.MAX_VALUE)
+                                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(est_nv, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
 
@@ -317,25 +290,25 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(cod_bar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cod_bar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(est_at, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(est_nv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                    .addComponent(est_at, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(est_nv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -405,10 +378,10 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private br.com.cyber.componente.KTextField cod;
-    private br.com.cyber.componente.KTextField cod_bar;
-    private br.com.cyber.componente.KTextField est_at;
-    private br.com.cyber.componente.KTextField est_nv;
+    private javax.swing.JTextField cod;
+    private javax.swing.JTextField cod_bar;
+    private javax.swing.JTextField est_at;
+    private javax.swing.JTextField est_nv;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -421,7 +394,7 @@ public class ifrmEstoque extends javax.swing.JInternalFrame {
     private br.com.cyber.componente.KButton kButton1;
     private br.com.cyber.componente.KButton kButton2;
     private br.com.cyber.componente.KButton kButton3;
-    private br.com.cyber.componente.KTextField nome;
+    private javax.swing.JTextField nome;
     private br.com.cyber.componente.KTextField psq_prod;
     private br.com.cyber.componente.Ktable tab_prod;
     // End of variables declaration//GEN-END:variables

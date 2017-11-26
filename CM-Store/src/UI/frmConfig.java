@@ -336,7 +336,7 @@ public class frmConfig extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(73, 173, 255));
+        jButton1.setBackground(new java.awt.Color(140, 140, 140));
         jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/063-database-1.png"))); // NOI18N
         jButton1.setText("Salvar");
@@ -346,7 +346,7 @@ public class frmConfig extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(73, 173, 255));
+        jButton2.setBackground(new java.awt.Color(140, 140, 140));
         jButton2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/061-database-3.png"))); // NOI18N
         jButton2.setText("Testar");
@@ -356,7 +356,7 @@ public class frmConfig extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(73, 173, 255));
+        jButton3.setBackground(new java.awt.Color(140, 140, 140));
         jButton3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/exit.png"))); // NOI18N
         jButton3.setText("Sair");

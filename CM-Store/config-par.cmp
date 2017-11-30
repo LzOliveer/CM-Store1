@@ -1,6 +1,6 @@
-mysql
-com.mysql.jdbc.Driver
-luiz.heliohost.org
-luiz_cmstore
-luiz_suporte
-ASDfgh+092618=13
+postgresql
+org.postgresql.Driver
+127.0.0.1
+cmstore
+postgres
+postgres

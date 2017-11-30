@@ -26,6 +26,7 @@ public class Convrt {
         NumberFormat instance = DecimalFormat.getInstance(new Locale("pt", "BR"));
         instance.setMaximumFractionDigits(2);
         try {
+            System.out.println("Aqui"+valor);
             return (Double) instance.parse(valor);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
@@ -47,7 +48,7 @@ public class Convrt {
 
     public static void main(String[] args) {
         
-        System.out.println("" + Convrt.vtop("1545,52"));
+        System.out.println("" + Convrt.vtop("8,00"));
         System.out.println("" + Convrt.ptov(1211211.119));
     }
 

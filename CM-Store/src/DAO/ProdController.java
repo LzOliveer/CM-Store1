@@ -54,15 +54,15 @@ public class ProdController {
         PreparedStatement ps;
         ps = Conexao.getConexao().prepareStatement(sql);
         try {
-            ps.setLong(1, Long.parseLong(prod.getCod_bar()));
+             ps.setLong(1, Long.parseLong(prod.getCod_bar()));
             ps.setString(2, prod.getNome());
             ps.setString(3, prod.getApr());
-            ps.setFloat(4, Float.parseFloat(prod.getPf()));
-            ps.setFloat(5, Float.parseFloat(prod.getLucro()));
-            ps.setFloat(6, Float.parseFloat(prod.getPv()));
-            ps.setInt(7, Integer.parseInt(prod.getEst()));
-            ps.setInt(8, Integer.parseInt(prod.getCod_fab()));
-            ps.setInt(9, Integer.parseInt(prod.getCod()));
+            ps.setDouble(4, prod.getPf());
+            ps.setDouble(5, prod.getLucro());
+            ps.setDouble(6, prod.getPv());
+            ps.setInt(7, prod.getEst());
+            ps.setInt(8, prod.getCod_fab());
+            ps.setInt(9, prod.getCod());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Cadastro do produto '" + prod.getNome() + "' atualizado com sucesso!", "CM - Store 1.0 | Aviso - Gerencidor de Produtos", JOptionPane.INFORMATION_MESSAGE, ok);
             return true;
@@ -78,8 +78,8 @@ public class ProdController {
         PreparedStatement ps;
         ps = Conexao.getConexao().prepareStatement(sql);
         try {
-            ps.setInt(2, Integer.parseInt(prod.getCod_fab()));
-            ps.setInt(1, Integer.parseInt(prod.getCod()));
+            ps.setInt(2, prod.getCod_fab());
+            ps.setInt(1, prod.getCod());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Exclusão do cadastro do produto '" + prod.getNome() + "' realizado com sucesso!", "CM - Store 1.0 | Aviso - Gerencidor de Produtos", JOptionPane.INFORMATION_MESSAGE, ok);
             return true;

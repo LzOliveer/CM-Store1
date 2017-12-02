@@ -36,7 +36,6 @@ public class frnPrincipal extends javax.swing.JFrame {
     public frnPrincipal() {
         initComponents();
         setIcon();
-        setLAF();
         this.setExtendedState(MAXIMIZED_BOTH);
         setLAF();
     }
@@ -79,6 +78,8 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -289,6 +290,27 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenu7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/039-user-6.png"))); // NOI18N
+        jMenuItem9.setText("Clientes");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem9);
+
+        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/007-delivery.png"))); // NOI18N
+        jMenuItem10.setText("Produtos");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem10);
+
         jMenuBar1.add(jMenu7);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Opções_2.png"))); // NOI18N
@@ -356,50 +378,102 @@ public class frnPrincipal extends javax.swing.JFrame {
         ifrmEmpresa ife = new ifrmEmpresa();
         ife.setVisible(true);
         desktop.add(ife);
-        ife.setPosicao();
+        try {
+            ife.setSelected(true);
+            ife.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         ifrmFuncionario iff = new ifrmFuncionario();
         iff.setVisible(true);
         desktop.add(iff);
-        iff.setPosicao();
+        try {
+            iff.setSelected(true);
+            iff.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         ifrmCliente ifc = new ifrmCliente();
         ifc.setVisible(true);
         desktop.add(ifc);
-        ifc.setPosicao();
+        try {
+            ifc.setSelected(true);
+            ifc.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         ifrmSalario ifs = new ifrmSalario();
         ifs.setVisible(true);
         desktop.add(ifs);
-        ifs.setPosicao();
+        try {
+            ifs.setSelected(true);
+            ifs.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         ifrmFabricante iffab = new ifrmFabricante();
         iffab.setVisible(true);
         desktop.add(iffab);
-        iffab.setPosicao();
+        try {
+            iffab.setSelected(true);
+            iffab.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         ifrmProduto ifp = new ifrmProduto();
         ifp.setVisible(true);
         desktop.add(ifp);
-        ifp.setPosicao();
+        try {
+            ifp.setSelected(true);
+            ifp.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         ifrmEstoque ife = new ifrmEstoque();
         ife.setVisible(true);
         desktop.add(ife);
-        ife.setPosicao();
+        try {
+            ife.setSelected(true);
+            ife.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
+
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        ifrmPsqCliente ifpc = new ifrmPsqCliente();
+        ifpc.setVisible(true);
+        desktop.add(ifpc);
+        try {
+            ifpc.setSelected(true);
+            ifpc.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
+
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        ifrmPsqProd ifpp = new ifrmPsqProd();
+        ifpp.setVisible(true);
+        desktop.add(ifpp);
+        try {
+            ifpp.setSelected(true);
+            ifpp.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,7 +508,7 @@ public class frnPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel ConnDB;
     private javax.swing.JLabel Data;
     private javax.swing.JLabel Hora;
-    private javax.swing.JDesktopPane desktop;
+    public static javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -445,6 +519,7 @@ public class frnPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -452,6 +527,7 @@ public class frnPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

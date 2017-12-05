@@ -5,7 +5,6 @@
  */
 package Util;
 
-
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -19,14 +18,15 @@ public class Convrt {
 
     /**
      * Converte um número 12,15 em 12.15
+     *
      * @param valor
-     * @return 
+     * @return
      */
     public static Double vtop(String valor) {
         NumberFormat instance = DecimalFormat.getInstance(new Locale("pt", "BR"));
         instance.setMaximumFractionDigits(2);
         try {
-            System.out.println("Aqui"+valor);
+            System.out.println("Aqui" + valor);
             return (Double) instance.parse(valor);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
@@ -36,8 +36,9 @@ public class Convrt {
 
     /**
      * Converte um número 12.15 em 12,15
+     *
      * @param valor
-     * @return 
+     * @return
      */
     public static String ptov(Double valor) {
         NumberFormat instance = DecimalFormat.getInstance(new Locale("pt", "BR"));
@@ -46,9 +47,10 @@ public class Convrt {
         return nf.format(valor);
     }
 
+
     public static void main(String[] args) {
-        
-        System.out.println("" + Convrt.vtop("8,00"));
+
+        System.out.println("" + Convrt.vtop("8,01"));
         System.out.println("" + Convrt.ptov(1211211.119));
     }
 

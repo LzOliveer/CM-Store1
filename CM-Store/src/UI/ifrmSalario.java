@@ -130,7 +130,9 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
         cod_fun.setText(tab_sal.getModel().getValueAt(select2, 3).toString());
         dt_inicial.setText(tab_sal.getModel().getValueAt(select2, 0).toString());
         dt_final.setText(tab_sal.getModel().getValueAt(select2, 1).toString());
-        vlr.setText(tab_sal.getModel().getValueAt(select2, 2).toString());
+        String salario = tab_sal.getModel().getValueAt(select2, 2).toString();
+        double salario2 = Double.parseDouble(salario);
+        vlr.setText(Convrt.ptov(salario2));
         setNome();
     }
 

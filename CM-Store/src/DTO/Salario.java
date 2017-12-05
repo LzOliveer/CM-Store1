@@ -14,7 +14,7 @@ public class Salario {
     private int cod_fun;
     private String dt_inicial;
     private String dt_final;
-    private String vlr;
+    private double vlr;
     private String nome;
 
     /**
@@ -76,14 +76,14 @@ public class Salario {
     /**
      * @return the vlr
      */
-    public String getVlr() {
+    public double getVlr() {
         return vlr;
     }
 
     /**
      * @param vlr the vlr to set
      */
-    public void setVlr(String vlr) {
+    public void setVlr(double vlr) {
         this.vlr = vlr;
     }
 

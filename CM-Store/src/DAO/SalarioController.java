@@ -8,6 +8,7 @@ package DAO;
 import persistencia.Conexao;
 import DTO.Salario;
 import java.awt.Toolkit;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -26,14 +27,14 @@ public class SalarioController {
     Icon ok = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icones/certo_1.png"))));
 
     public boolean cadastra(Salario sal) throws SQLException, ClassNotFoundException {
-        String sql = "INSERT INTO salario(cod_funcionario, datainicial, datafinal, valor) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO salario(cod_funcionario, dt_inicial, dt_final, valor) VALUES(?,?,?,?)";
         PreparedStatement ps;
         ps = Conexao.getConexao().prepareStatement(sql);
         try {
             ps.setInt(1, sal.getCod_fun());
-            ps.setString(2, sal.getDt_inicial());
-            ps.setString(3, sal.getDt_final());
-            ps.setString(4, sal.getVlr());
+            ps.setDate(2, Date.valueOf(sal.getDt_inicial()));
+            ps.setDate(3, Date.valueOf(sal.getDt_final()));
+            ps.setDouble(4, sal.getVlr());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Salário do funcionário(a) " + sal.getNome() + " cadastrado(a) com sucesso!", "CM - Store 1.0 | Aviso - Gerenciador de Salários", JOptionPane.INFORMATION_MESSAGE, ok);
             return true;
@@ -46,13 +47,13 @@ public class SalarioController {
     }
 
     public boolean edita(Salario sal) throws SQLException, ClassNotFoundException {
-        String sql = "UPDATE salario SET datainicial = ?, datafinal = ?, valor = ? where codigo = ? or cod_funcionario = ?";
+        String sql = "UPDATE salario SET dt_inicial = ?, dt_final = ?, valor = ? where codigo = ? or cod_funcionario = ?";
         PreparedStatement ps;
         ps = Conexao.getConexao().prepareStatement(sql);
         try {
-            ps.setString(1, sal.getDt_inicial());
-            ps.setString(2, sal.getDt_final());
-            ps.setString(3, sal.getVlr());
+            ps.setDate(1, Date.valueOf(sal.getDt_inicial()));
+            ps.setDate(2, Date.valueOf(sal.getDt_final()));
+            ps.setDouble(3, sal.getVlr());
             ps.setInt(4, sal.getCod());
             ps.setInt(5, sal.getCod_fun());
             ps.execute();
@@ -66,7 +67,7 @@ public class SalarioController {
     }
 
     public boolean exclui(Salario sal) throws SQLException, ClassNotFoundException {
-        String sql = "DELETE FROM salario where codigo=? or cod_funcionario = ?";
+        String sql = "DELETE FROM salario where codigo=? and cod_funcionario = ?";
         PreparedStatement ps;
         ps = Conexao.getConexao().prepareStatement(sql);
         try {

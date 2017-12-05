@@ -8,6 +8,7 @@ package UI;
 import persistencia.Conexao;
 import DAO.SalarioController;
 import DTO.Salario;
+import Util.Convrt;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.PreparedStatement;
@@ -128,8 +129,8 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
         cod.setText(tab_sal.getModel().getValueAt(select2, 4).toString());
         cod_fun.setText(tab_sal.getModel().getValueAt(select2, 3).toString());
         dt_inicial.setText(tab_sal.getModel().getValueAt(select2, 0).toString());
-        dt_final.setText(tab_sal.getModel().getValueAt(select2, 2).toString());
-        vlr.setText(tab_sal.getModel().getValueAt(select2, 1).toString());
+        dt_final.setText(tab_sal.getModel().getValueAt(select2, 1).toString());
+        vlr.setText(tab_sal.getModel().getValueAt(select2, 2).toString());
         setNome();
     }
 
@@ -172,6 +173,7 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
         kButton3 = new br.com.cyber.componente.KButton();
         kButton4 = new br.com.cyber.componente.KButton();
         kButton5 = new br.com.cyber.componente.KButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -208,7 +210,7 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
         jLabel4.setText("Data Inicial");
 
         try {
-            dt_inicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            dt_inicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -219,7 +221,7 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
         jLabel5.setText("Data Final");
 
         try {
-            dt_final.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            dt_final.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -358,6 +360,10 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel9.setText("Formato: aaaa-MM-dd");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -396,7 +402,9 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cod_fun)
-                                    .addComponent(dt_final, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(dt_final, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addComponent(jLabel8)))))
@@ -436,7 +444,8 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(dt_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(dt_final, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dt_final, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -535,7 +544,7 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
         sal.setCod_fun(Integer.parseInt(cod_fun.getText()));
         sal.setDt_inicial(dt_inicial.getText());
         sal.setDt_final(dt_final.getText());
-        sal.setVlr(vlr.getText());
+        sal.setVlr(Convrt.vtop(vlr.getText()));
         sal.setNome(psq_fun.getText());
         sal.setCod(Integer.parseInt(cod.getText()));
 
@@ -566,7 +575,7 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
         sal.setCod_fun(Integer.parseInt(cod_fun.getText()));
         sal.setDt_inicial(dt_inicial.getText());
         sal.setDt_final(dt_final.getText());
-        sal.setVlr(vlr.getText());
+        sal.setVlr(Convrt.vtop(vlr.getText()));
         sal.setNome(psq_fun.getText());
 
         if ((cod_fun.getText().isEmpty()) || (psq_fun.getText().isEmpty()) || (dt_inicial.getText().isEmpty()) || (dt_final.getText().isEmpty()) || (vlr.getText().isEmpty())) {
@@ -605,6 +614,7 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

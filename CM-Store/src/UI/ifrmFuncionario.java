@@ -337,6 +337,11 @@ public class ifrmFuncionario extends javax.swing.JInternalFrame {
         kButton5.setText("Cadastrar");
         kButton5.setToolTipText("Cadastra um novo funcionário de acordo com os dados informados acima");
         kButton5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        kButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -605,6 +610,48 @@ public class ifrmFuncionario extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_kButton4ActionPerformed
+
+    private void kButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton5ActionPerformed
+        Funcionario fun = new Funcionario();
+        fun.setCpf(cpf.getText());
+        fun.setRg(rg.getText());
+        fun.setNct(nct.getText());
+        fun.setPis(pis.getText());
+        fun.setNome(nome.getText());
+        fun.setEnd(end.getText());
+        fun.setSexo(sexo.getSelectedItem().toString());
+        fun.setTel(tel.getText());
+        fun.setCel(cel.getText());
+        fun.setPass(pass.getText());
+        fun.setCat(Integer.parseInt(cat.getSelectedItem().toString()));
+
+        if ((cpf.getText().isEmpty()) || (rg.getText().isEmpty()) || (nct.getText().isEmpty()) || (nome.getText().isEmpty()) || (end.getText().isEmpty()) || ("Selecione".equals(sexo.getSelectedItem())) || ("Selecione".equals(cat.getSelectedItem())) || (pass.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Os campos não podem estar incompletos. Favor preencher todos os campos", "CM - Store 1.0 | Aviso - Gerencidor de Funcionarios", JOptionPane.INFORMATION_MESSAGE, aviso);
+        } else {
+
+            try {
+
+                FuncionarioController fc = new FuncionarioController();
+                fc.cadastra(fun);
+                psq_fun.setText("");
+                cod.setText("");
+                cpf.setText("");
+                rg.setText("");
+                pis.setText("");
+                nct.setText("");
+                nome.setText("");
+                end.setText("");
+                sexo.setSelectedItem("Selecione");
+                tel.setText("");
+                cel.setText("");
+                pass.setText("");
+                cat.setSelectedItem("Selecione");
+                list_fun();
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(ifrmFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_kButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

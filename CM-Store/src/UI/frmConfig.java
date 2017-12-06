@@ -31,10 +31,10 @@ public class frmConfig extends javax.swing.JFrame {
     public static String DB;
     public static String USER;
     public static String PASS;
-    
+
     Icon erro = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/Erro.png"))));
     Icon ok = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/certo_1.png"))));
-    
+
     /**
      * Creates new form frmConfig
      */
@@ -91,6 +91,11 @@ public class frmConfig extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Creative Mind | Configurador Local 1.5");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -256,7 +261,7 @@ public class frmConfig extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 170, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(3, 3, 3)
@@ -395,7 +400,7 @@ public class frmConfig extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -445,11 +450,11 @@ public class frmConfig extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(frmConfig.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void dbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbActionPerformed
@@ -457,7 +462,7 @@ public class frmConfig extends javax.swing.JFrame {
     }//GEN-LAST:event_dbActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-   
+
         String sql = "Select * from loja";
         PreparedStatement ps;
         ResultSet rs;
@@ -471,6 +476,10 @@ public class frmConfig extends javax.swing.JFrame {
             Logger.getLogger(frmConfig.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        comp_frm();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -492,7 +501,7 @@ public class frmConfig extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(frmConfig.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -540,7 +549,22 @@ public class frmConfig extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
-       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/064-database.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/064-database.png")));
+    }
+
+    private void comp_frm() {
+        try {
+            LeParametros.Ler();
+            sgdb.setText(Conexao.sgdb);
+            driver.setText(Conexao.driver);
+            ip.setText(Conexao.ip);
+            db.setText(Conexao.dataBase);
+            user.setText(Conexao.user);
+            pass.setText(Conexao.password);
+        } catch (IOException ex) {
+            Logger.getLogger(frmConfig.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro no processo de leitura de dados:\n\n" + ex, "Leitura de dados | CM - Store 1.0", JOptionPane.ERROR_MESSAGE, erro);
+        }
     }
 
     private void CompletaFrm() {

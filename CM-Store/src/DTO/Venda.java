@@ -16,6 +16,8 @@ public class Venda {
     private int qtd;
     private String dt;
     private String forma_pgt;
+    private double valor;
+    private double total;
 
     /**
      * @return the cod_venda
@@ -99,6 +101,34 @@ public class Venda {
      */
     public void setForma_pgt(String forma_pgt) {
         this.forma_pgt = forma_pgt;
+    }
+
+    /**
+     * @return the valor
+     */
+    public double getValor() {
+        return valor;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    /**
+     * @return the total
+     */
+    public double getTotal() {
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(double total) {
+        this.total = total;
     }
     
 }

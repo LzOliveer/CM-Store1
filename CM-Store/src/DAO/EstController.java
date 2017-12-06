@@ -43,19 +43,4 @@ public class EstController {
         }
     }
     
-        public boolean venda(Estoque est) throws SQLException, ClassNotFoundException {
-        String sql = "UPDATE produto SET estoque = ? where codigo = ?";
-        PreparedStatement ps;
-        ps = Conexao.getConexao().prepareStatement(sql);
-        try {
-            ps.setInt(1, est.getEst_venda());
-            ps.setInt(2, Integer.parseInt(est.getCod()));
-            ps.execute();
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(EstController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erro, baixa no estoque não realizada!\n\n" + "Erro SQL:\n" + ex, "CM - Store 1.0 | Erro - Vendas", JOptionPane.ERROR_MESSAGE, erro);
-            return false;
-        }
-    }
 }

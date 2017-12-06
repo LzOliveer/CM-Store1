@@ -74,7 +74,7 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
     }
 
     public void psq_produto() {
-        String sql = "Select * from produto where codigo like ? or codbarras like ?or nome like ?";
+        String sql = "Select * from produto where codigo like ? or codbarras like ? or nome like ?";
         PreparedStatement ps;
         ResultSet rs;
         try {
@@ -90,12 +90,12 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
     }
 
     public void nm_fab() {
-        String sql = "Select codigo,nome from loja where codigo like ?";
+        String sql = "Select codigo,nome from fabricante where codigo = ?";
         PreparedStatement ps;
         ResultSet rs;
         try {
             ps = Conexao.getConexao().prepareStatement(sql);
-            ps.setString(1, cod_fab.getText() + "%");
+            ps.setInt(1, Integer.parseInt(cod_fab.getText()));
             rs = ps.executeQuery();
             tab_fab.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (ClassNotFoundException | SQLException error) {
@@ -104,7 +104,7 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
     }
 
     public void psq_fabricante() {
-        String sql = "Select codigo,nome from loja where nome like ? or codigo like = ?";
+        String sql = "Select codigo,nome from fabricante where nome like ? or codigo like = ?";
         PreparedStatement ps;
         ResultSet rs;
         try {

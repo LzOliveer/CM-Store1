@@ -75,25 +75,27 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
     }
 
     public void psq_fun() {
-        String sql = "Select codigo,nome from funcionario where nome like ? or codigo like ?";
+        String sql = "Select codigo,nome from funcionario where nome like ? or codigo = ?";
         PreparedStatement ps;
         ResultSet rs;
-        String sql2 = "Select s.codigo, s.datainicial, s.valor, s.datafinal, s.cod_funcionario from salario s JOIN funcionario f on s.cod_funcionario = f.codigo WHERE f.nome like ? or f.codigo like ?";
+        String sql2 = "Select s.codigo, s.datainicial, s.valor, s.datafinal, s.cod_funcionario from salario s JOIN funcionario f on s.cod_funcionario = f.codigo WHERE f.nome like ? or f.codigo = ?";
         PreparedStatement ps2;
         ResultSet rs2;
         int codfunc;
         try {
             ps = Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, psq_fun.getText() + "%");
-            ps.setString(2, psq_fun.getText() + "%");
+            ps.setInt(2, Integer.parseInt(psq_fun.getText()));
             rs = ps.executeQuery();
             tab_fun.setModel(DbUtils.resultSetToTableModel(rs));
+            System.out.println("aki 1");
             try {
                 ps2 = Conexao.getConexao().prepareStatement(sql2);
                 ps2.setString(1, psq_fun.getText() + "%");
-                ps2.setString(2, psq_fun.getText() + "%");
+                ps2.setInt(2,Integer.parseInt(psq_fun.getText()));
                 rs2 = ps2.executeQuery();
                 tab_sal.setModel(DbUtils.resultSetToTableModel(rs2));
+                System.out.println("aki 2");
             } catch (SQLException error) {
                 JOptionPane.showMessageDialog(null, error, "CM - Store 1.0 | Erro - Gerenciador de Salários", JOptionPane.ERROR_MESSAGE, erro);
             } catch (ClassNotFoundException ex) {
@@ -107,12 +109,12 @@ public class ifrmSalario extends javax.swing.JInternalFrame {
     }
 
     public void setNome() {
-        String sql = "Select codigo,nome from funcionario where codigo like ?";
+        String sql = "Select codigo,nome from funcionario where codigo = ?";
         PreparedStatement ps;
         ResultSet rs;
         try {
             ps = Conexao.getConexao().prepareStatement(sql);
-            ps.setString(1, cod_fun.getText() + "%");
+            ps.setInt(1, Integer.parseInt(cod_fun.getText()));
             rs = ps.executeQuery();
             tab_fun.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException error) {

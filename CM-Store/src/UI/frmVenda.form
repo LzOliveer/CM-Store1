@@ -4,6 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Frente de Caixa - Vendas | CM - Store 1.0"/>
+    <Property name="undecorated" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -345,6 +346,9 @@
                   <Font name="Arial" size="14" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kButton3ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="br.com.cyber.componente.KButton" name="kButton4">
               <Properties>

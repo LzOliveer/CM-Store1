@@ -5,9 +5,7 @@
  */
 package UI;
 
-import DAO.EstController;
 import DAO.VendaController;
-import DTO.Estoque;
 import DTO.Venda;
 import Util.Convrt;
 import java.awt.Toolkit;
@@ -39,7 +37,7 @@ public class frmVenda extends javax.swing.JFrame {
     int cv;
     int estq;
     public int est_nv;
-    
+
     /**
      * Creates new form frmVenda
      */
@@ -75,13 +73,14 @@ public class frmVenda extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, error, "CM - Store 1.0 | Erro - Vendas", JOptionPane.ERROR_MESSAGE, erro);
         }
     }
-    
+
     public void list_item() {
-        String sql = "Select * from venda_produto";
+        String sql = "Select * from venda_produto where cod_venda = ?";
         PreparedStatement ps;
         ResultSet rs;
         try {
             ps = Conexao.getConexao().prepareStatement(sql);
+            ps.setInt(1, cv);
             rs = ps.executeQuery();
             tab_itens.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (ClassNotFoundException | SQLException error) {
@@ -135,8 +134,8 @@ public class frmVenda extends javax.swing.JFrame {
         vlr_unit.setText(Convrt.ptov(pv2));
         qtd.setText("1");
     }
-    
-    public void comp_cod_prod(){
+
+    public void comp_cod_prod() {
         int seleciona = tab_prod.getSelectedRow();
         prod.setText(tab_prod.getModel().getValueAt(seleciona, 1).toString());
         cod_prod.setText(tab_prod.getModel().getValueAt(seleciona, 0).toString());
@@ -144,8 +143,8 @@ public class frmVenda extends javax.swing.JFrame {
         double pv2 = Double.parseDouble(pv1);
         vlr_unit.setText(Convrt.ptov(pv2));
     }
-    
-    public void comp_ifrm3(){
+
+    public void comp_ifrm3() {
         int seleciona = tab_itens.getSelectedRow();
         qtd.setText(tab_itens.getModel().getValueAt(seleciona, 0).toString());
         psq_prod.setText(tab_itens.getModel().getValueAt(seleciona, 1).toString());
@@ -172,7 +171,6 @@ public class frmVenda extends javax.swing.JFrame {
             return false;
         }
     }
-    
 
     private void getCodVenda() throws ClassNotFoundException {
         String sql = "select codigo from venda where total = 0.00";
@@ -191,7 +189,7 @@ public class frmVenda extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Erro na abertura de ordem de venda", "Erro | CM - Store 1.0", JOptionPane.ERROR_MESSAGE, erro);
             }
         } catch (SQLException error) {
-            JOptionPane.showMessageDialog(null, "Erro:\n\n" + error, "Login | CM - Store 1.0", JOptionPane.ERROR_MESSAGE, erro);
+            JOptionPane.showMessageDialog(null, "Erro:\n\n" + error, "Vendas | CM - Store 1.0", JOptionPane.ERROR_MESSAGE, erro);
         }
     }
 
@@ -245,6 +243,7 @@ public class frmVenda extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Frente de Caixa - Vendas | CM - Store 1.0");
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -317,6 +316,11 @@ public class frmVenda extends javax.swing.JFrame {
         kButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/032-cart-2.png"))); // NOI18N
         kButton3.setText("Cancelar");
         kButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        kButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton3ActionPerformed(evt);
+            }
+        });
 
         kButton4.setBackground(new java.awt.Color(140, 140, 140));
         kButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -680,7 +684,7 @@ public class frmVenda extends javax.swing.JFrame {
         Date dt = new Date();
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
         data.setText(fmt.format(dt));
-        
+
         AbreOrdem();
         try {
             getCodVenda();
@@ -709,11 +713,12 @@ public class frmVenda extends javax.swing.JFrame {
         Venda v = new Venda();
         v.setCod_prod(Integer.parseInt(cod_prod.getText()));
         v.setQtd(Integer.parseInt(qtd.getText()));
+        calc_tot_item();
         v.setValor(f);
         v.setCod_venda(cv);
-        tot = tot+f;
+        tot = tot + f;
         vlr_tot.setText(Convrt.ptov(tot));
-        
+
         VendaController vc = new VendaController();
         try {
             vc.addItem(v);
@@ -722,7 +727,6 @@ public class frmVenda extends javax.swing.JFrame {
             qtd.setText("");
             vlr_unit.setText("");
             list_item();
-
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(frmVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -732,11 +736,11 @@ public class frmVenda extends javax.swing.JFrame {
         Venda v = new Venda();
         v.setCod_prod(Integer.parseInt(cod_prod.getText()));
         v.setQtd(Integer.parseInt(qtd.getText()));
+        calc_tot_item();
         v.setCod_venda(cv);
         tot = tot - f;
         vlr_tot.setText(Convrt.ptov(tot));
-        
-        EstController ec = new EstController();
+
         VendaController vc = new VendaController();
         try {
             vc.delItem(v);
@@ -757,16 +761,16 @@ public class frmVenda extends javax.swing.JFrame {
         v.setForma_pgt(pgt.getSelectedItem().toString());
         v.setTotal(Convrt.vtop(vlr_tot.getText()));
         v.setCod_venda(cv);
-        
-        if((cod_cli.getText().isEmpty()) || ("Selecione".equals(pgt.getSelectedItem()))){
+
+        if ((cod_cli.getText().isEmpty()) || ("Selecione".equals(pgt.getSelectedItem()))) {
             JOptionPane.showMessageDialog(null, "Favor selecionar um cliente da tabela e um meio de pagamento", "CM - Store 1.0 | Aviso - Vendas", JOptionPane.INFORMATION_MESSAGE, aviso);
         }
-        
+
         VendaController vc = new VendaController();
         try {
             vc.finaliza(v);
             list_item();
-            System.exit(0);
+            dispose();
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(frmVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -775,6 +779,20 @@ public class frmVenda extends javax.swing.JFrame {
     private void qtdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtdKeyReleased
         calc_tot_item();
     }//GEN-LAST:event_qtdKeyReleased
+
+    private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
+        Venda v = new Venda();
+        v.setCod_venda(cv);
+
+        VendaController vc = new VendaController();
+        try {
+            vc.cancela(v);
+            list_item();
+            System.exit(0);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(frmVenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_kButton3ActionPerformed
 
     /**
      * @param args the command line arguments

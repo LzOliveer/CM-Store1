@@ -70,13 +70,13 @@ public class ifrmCliente extends javax.swing.JInternalFrame {
     }
 
     public void psq_cliente() {
-        String sql = "Select codigo, nome, endereco, telefone, celular, cpf, rg, sexo, cod_loja, email from cliente where nome like ? or codigo like ?";
+        String sql = "Select codigo, nome, endereco, telefone, celular, cpf, rg, sexo, cod_loja, email from cliente where nome like ? or codigo = ?";
         PreparedStatement ps;
         ResultSet rs;
         try {
             ps = Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, psq_cli.getText() + "%");
-            ps.setString(2, psq_cli.getText() + "%");
+            ps.setInt(2, Integer.parseInt(psq_cli.getText()));
             rs = ps.executeQuery();
             tab_cli.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (ClassNotFoundException | SQLException error) {
@@ -85,12 +85,12 @@ public class ifrmCliente extends javax.swing.JInternalFrame {
     }
 
     public void nm_emp() {
-        String sql = "Select codigo,nome from loja where codigo like ?";
+        String sql = "Select codigo,nome from loja where codigo = ?";
         PreparedStatement ps;
         ResultSet rs;
         try {
             ps = Conexao.getConexao().prepareStatement(sql);
-            ps.setString(1, cod_emp.getText() + "%");
+            ps.setInt(1, Integer.parseInt(cod_emp.getText()));
             rs = ps.executeQuery();
             tab_emp.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (ClassNotFoundException | SQLException error) {

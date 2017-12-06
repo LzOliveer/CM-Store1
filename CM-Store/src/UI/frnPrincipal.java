@@ -77,6 +77,8 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -281,6 +283,27 @@ public class frnPrincipal extends javax.swing.JFrame {
         jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/034-cart.png"))); // NOI18N
+        jMenuItem11.setText("Venda");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem11);
+
+        jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F11, 0));
+        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/032-cart-2.png"))); // NOI18N
+        jMenuItem12.setText("Deleta Venda");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem12);
+
         jMenuBar1.add(jMenu5);
 
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/009-search_1.png"))); // NOI18N
@@ -475,6 +498,22 @@ public class frnPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        frmVenda fv = new frmVenda();
+        fv.setVisible(true);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        ifrmCancVenda ifcv = new ifrmCancVenda();
+        ifcv.setVisible(true);
+        desktop.add(ifcv);
+        try {
+            ifcv.setSelected(true);
+            ifcv.setPosicao();
+        } catch (java.beans.PropertyVetoException e) {
+        }
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -520,6 +559,8 @@ public class frnPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

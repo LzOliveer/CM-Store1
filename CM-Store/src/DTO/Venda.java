@@ -14,6 +14,7 @@ public class Venda {
     private int cod_prod;
     private int cod_cli;
     private int qtd;
+    private int est;
     private String dt;
     private String forma_pgt;
     private double valor;
@@ -129,6 +130,20 @@ public class Venda {
      */
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    /**
+     * @return the est
+     */
+    public int getEst() {
+        return est;
+    }
+
+    /**
+     * @param est the est to set
+     */
+    public void setEst(int est) {
+        this.est = est;
     }
     
 }

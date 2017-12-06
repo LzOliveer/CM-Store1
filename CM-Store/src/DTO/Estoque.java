@@ -15,6 +15,7 @@ public class Estoque {
     private String nome;
     private String est_at;
     private String est_nv;
+    private int est_venda;
 
     /**
      * @return the cod
@@ -84,5 +85,19 @@ public class Estoque {
      */
     public void setEst_nv(String est_nv) {
         this.est_nv = est_nv;
+    }
+
+    /**
+     * @return the est_venda
+     */
+    public int getEst_venda() {
+        return est_venda;
+    }
+
+    /**
+     * @param est_venda the est_venda to set
+     */
+    public void setEst_venda(int est_venda) {
+        this.est_venda = est_venda;
     }
 }

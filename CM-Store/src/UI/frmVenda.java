@@ -5,7 +5,9 @@
  */
 package UI;
 
+import DAO.EstController;
 import DAO.VendaController;
+import DTO.Estoque;
 import DTO.Venda;
 import Util.Convrt;
 import java.awt.Toolkit;
@@ -35,6 +37,9 @@ public class frmVenda extends javax.swing.JFrame {
     double tot = 0;
     double f;
     int cv;
+    int estq;
+    public int est_nv;
+    
     /**
      * Creates new form frmVenda
      */
@@ -165,6 +170,25 @@ public class frmVenda extends javax.swing.JFrame {
             Logger.getLogger(frmVenda.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Erro, cadastro não realizado! Verifique os dados informados.\n\n" + "Erro SQL:\n" + ex, "CM - Store 1.0 | Erro - Gerenciador de Clientes", JOptionPane.ERROR_MESSAGE, erro);
             return false;
+        }
+    }
+    
+    private void getEstoque() throws ClassNotFoundException{
+        String sql = "select estoque from produto where codigo = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            ps = Conexao.getConexao().prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(cod_prod.getText()));
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int est = (rs.getInt("estoque"));
+                estq = est;
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro na leitura do estoque", "Erro | CM - Store 1.0", JOptionPane.ERROR_MESSAGE, erro);
+            }
+        } catch (SQLException error) {
+            JOptionPane.showMessageDialog(null, "Erro:\n\n" + error, "Login | CM - Store 1.0", JOptionPane.ERROR_MESSAGE, erro);
         }
     }
 
@@ -701,16 +725,22 @@ public class frmVenda extends javax.swing.JFrame {
 
     private void kButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton5ActionPerformed
         Venda v = new Venda();
+        Estoque estqs = new Estoque();
         v.setCod_prod(Integer.parseInt(cod_prod.getText()));
+        estqs.setCod(cod_prod.getText());
         v.setQtd(Integer.parseInt(qtd.getText()));
+        int qt = v.getQtd();
+        estqs.setEst_venda(estq - qt);
         v.setValor(f);
         v.setCod_venda(cv);
         tot = tot+f;
         vlr_tot.setText(Convrt.ptov(tot));
         
+        EstController ec = new EstController();
         VendaController vc = new VendaController();
         try {
             vc.addItem(v);
+            ec.venda(estqs);
             prod.setText("");
             cod_prod.setText("");
             qtd.setText("");
@@ -723,14 +753,21 @@ public class frmVenda extends javax.swing.JFrame {
 
     private void kButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton6ActionPerformed
         Venda v = new Venda();
+        Estoque estqs = new Estoque();
         v.setCod_prod(Integer.parseInt(cod_prod.getText()));
+        estqs.setCod(cod_prod.getText());
+        v.setQtd(Integer.parseInt(qtd.getText()));
+        int qt = v.getQtd();
+        estqs.setEst_venda(estq - qt);
         v.setCod_venda(cv);
-         tot = tot - f;
+        tot = tot - f;
         vlr_tot.setText(Convrt.ptov(tot));
         
+        EstController ec = new EstController();
         VendaController vc = new VendaController();
         try {
             vc.delItem(v);
+            ec.venda(estqs);
             prod.setText("");
             cod_prod.setText("");
             qtd.setText("");

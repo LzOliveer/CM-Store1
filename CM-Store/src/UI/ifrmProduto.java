@@ -124,9 +124,15 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
         cod_bar.setText(tab_prod.getModel().getValueAt(seleciona, 1).toString());
         nome.setText(tab_prod.getModel().getValueAt(seleciona, 2).toString());
         apr.setText(tab_prod.getModel().getValueAt(seleciona, 3).toString());
-        pf.setText(tab_prod.getModel().getValueAt(seleciona, 4).toString());
-        lucro.setText(tab_prod.getModel().getValueAt(seleciona, 5).toString());
-        pv.setText(tab_prod.getModel().getValueAt(seleciona, 6).toString());
+        String pf1 = tab_prod.getModel().getValueAt(seleciona, 4).toString();
+        double pf2 = Double.parseDouble(pf1);
+        pf.setText(Convrt.ptov(pf2));
+        String lcr1 = tab_prod.getModel().getValueAt(seleciona, 5).toString();
+        double lcr2 = Double.parseDouble(lcr1);
+        lucro.setText(Convrt.ptov(lcr2));
+        String pv1 = tab_prod.getModel().getValueAt(seleciona, 6).toString();
+        double pv2 = Double.parseDouble(pv1);
+        pv.setText(Convrt.ptov(pv2));
         est.setText(tab_prod.getModel().getValueAt(seleciona, 7).toString());
         cod_fab.setText(tab_prod.getModel().getValueAt(seleciona, 8).toString());
         psq_fab.setText("");
@@ -676,9 +682,9 @@ public class ifrmProduto extends javax.swing.JInternalFrame {
         prod.setApr(apr.getText());
         prod.setCod_fab(Integer.parseInt(cod_fab.getText()));
         prod.setEst(Integer.parseInt(est.getText()));
-        prod.setLucro(Double.parseDouble(lucro.getText()));
-        prod.setPf(Double.parseDouble(pf.getText()));
-        prod.setPv(Double.parseDouble(pv.getText()));
+        prod.setLucro(Convrt.vtop(lucro.getText()));
+        prod.setPf(Convrt.vtop(pf.getText()));
+        prod.setPv(Convrt.vtop(pv.getText()));
         prod.setCod(Integer.parseInt(cod.getText()));
 
         if ((cod.getText().isEmpty()) || (cod_bar.getText().isEmpty()) || (est.getText().isEmpty()) || (pf.getText().isEmpty()) || (nome.getText().isEmpty()) || (pv.getText().isEmpty()) || (lucro.getText().isEmpty()) || (cod_fab.getText().isEmpty()) || (apr.getText().isEmpty())) {
